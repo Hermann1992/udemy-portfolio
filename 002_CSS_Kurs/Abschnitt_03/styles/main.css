@@ -1,0 +1,30 @@
+/*CSS-Reset durchführen:*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: black;
+    font-family: 'Dosis', sans-serif;
+}
+
+.welcome-future{
+    color: white;
+    font-size: 80px;
+    margin: 0px auto;
+    max-width: 700px;
+    text-align: center;
+    margin-top: 200px;
+}
+
+/* folgender Code wird nur ausgeführt, wenn Browser den supports-Befehl und die background-clip-Egienschaft unterstützt */
+@supports(background-clip: text) or (-webkit-background-clip: text){
+    .welcome-future{   
+        color: transparent;
+        background-image: linear-gradient(90deg, white 35%, rgb(100,0,0), white 65%);
+        background-clip: text;   /*Bezieht sich nur auf den Hintergrund. Auch border-box, content-box, padding-box */
+        -webkit-background-clip: text; /* um bei allen Browern zu funktionieren */
+    }
+}

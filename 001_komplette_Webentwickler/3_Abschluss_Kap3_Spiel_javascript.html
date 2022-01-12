@@ -1,0 +1,159 @@
+<html>
+    
+    <!-- Variablen anlegen -->
+    
+    
+    <head>
+        <title>JavaScript</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    
+        <style type="text/css">
+            
+            .Finger{
+                
+                background-color: burlywood;
+                border-radius: 10%;
+                height: 100px;
+                width: 20px;
+                margin-left: 10px;
+                float: left;
+                
+            }
+            #Finger1{
+                
+                height: 50px;
+                width: 24px;
+                margin-top: 50px;
+            }
+            #Finger2{
+                height: 90px;
+                margin-top: 10px;
+            }
+            #Finger3{
+                
+                height: 100px;
+                width: 21px;
+                margin-top: 0px;
+            }
+            #Finger4{
+                
+                height: 90px;
+                margin-top: 10px;
+            }
+            #Finger5{
+                
+                height: 70px;
+                width: 17px;
+                margin-top: 30px;
+            }
+            #Hand {
+                background-color: burlywood;
+                width: 142px;
+                height: 60px;
+                margin-top: 78px;
+                margin-left: 10px;
+                /* float:inherit; */
+                text-align: center;
+                padding-top: 40px;
+                }
+            
+            #Eingabe{
+                
+                width: 220px;
+            }
+
+
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <p> Wie viele Finger zeige ich? </p>
+        <p> <input type="text" id = "Eingabe" placeholder="Antwort als Ziffer"> </p>
+        <p> <button id="button"> Antwort senden </button> <button id="neu"> Neuer Versuch </button></p>
+        
+        <div class="Finger" id="Finger1">  </div>
+        <div class="Finger" id="Finger2">  </div>
+        <div class="Finger" id="Finger3">  </div>
+        <div class="Finger" id="Finger4">  </div>
+        <div class="Finger" id="Finger5">  </div>
+        <p> <br> </p>
+        <div id="Hand">  </div>
+        
+        <script>
+            
+            var randomAnzahl = 5;
+            
+            document.getElementById("neu").onclick = function(){
+                
+                document.getElementById("Hand").innerHTML = "";
+                
+                var min = 0;
+                var max = 5;
+                randomAnzahl = Math.round(Math.random()*(max - min))+min;
+                /* alert("Es wurde eine " + randomAnzahl + " erzeugt."); */
+                
+                if(randomAnzahl == 0){
+                    document.getElementById("Finger1").style.backgroundColor="white";
+                    document.getElementById("Finger2").style.backgroundColor="white";
+                    document.getElementById("Finger3").style.backgroundColor="white";
+                    document.getElementById("Finger4").style.backgroundColor="white";
+                    document.getElementById("Finger5").style.backgroundColor="white";
+                } else if (randomAnzahl == 1){
+                    document.getElementById("Finger1").style.backgroundColor="white";
+                    document.getElementById("Finger2").style.backgroundColor="white";
+                    document.getElementById("Finger3").style.backgroundColor="burlywood";
+                    document.getElementById("Finger4").style.backgroundColor="white";
+                    document.getElementById("Finger5").style.backgroundColor="white";
+                }else if (randomAnzahl == 2){
+                    document.getElementById("Finger1").style.backgroundColor="white";
+                    document.getElementById("Finger2").style.backgroundColor="burlywood";
+                    document.getElementById("Finger3").style.backgroundColor="burlywood";
+                    document.getElementById("Finger4").style.backgroundColor="white";
+                    document.getElementById("Finger5").style.backgroundColor="white";
+                }else if (randomAnzahl == 3){
+                    document.getElementById("Finger1").style.backgroundColor="burlywood";
+                    document.getElementById("Finger2").style.backgroundColor="burlywood";
+                    document.getElementById("Finger3").style.backgroundColor="burlywood";
+                    document.getElementById("Finger4").style.backgroundColor="white";
+                    document.getElementById("Finger5").style.backgroundColor="white";
+                }else if (randomAnzahl == 4){
+                    document.getElementById("Finger1").style.backgroundColor="white";
+                    document.getElementById("Finger2").style.backgroundColor="burlywood";
+                    document.getElementById("Finger3").style.backgroundColor="burlywood";
+                    document.getElementById("Finger4").style.backgroundColor="burlywood";
+                    document.getElementById("Finger5").style.backgroundColor="burlywood";
+                }else if (randomAnzahl == 5){
+                    document.getElementById("Finger1").style.backgroundColor="burlywood";
+                    document.getElementById("Finger2").style.backgroundColor="burlywood";
+                    document.getElementById("Finger3").style.backgroundColor="burlywood";
+                    document.getElementById("Finger4").style.backgroundColor="burlywood";
+                    document.getElementById("Finger5").style.backgroundColor="burlywood";
+                }
+                
+            }
+            
+            document.getElementById("button").onclick = function(){
+                
+                var Eingabe = document.getElementById("Eingabe").value;
+                
+                if (Eingabe == randomAnzahl){
+                    
+                    document.getElementById("Hand").innerHTML = "Richtig!";
+                }else{
+                    document.getElementById("Hand").innerHTML = "Falsch!";
+                }
+                
+            }
+            
+        
+        
+        </script>
+    
+    </body>
+
+
+
+
+</html>

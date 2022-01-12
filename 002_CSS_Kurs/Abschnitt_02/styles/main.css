@@ -1,0 +1,173 @@
+/*CSS-Reset durchführen:*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* best practice besonders bei responsive-design */
+}
+
+html{
+    
+    /* font-size: 62.5%; /* dann entspricht in allen Children 1em = 10px */
+    
+    height: 100%;   /* Höhe entspricht parent-element; hier Browser-Fenster*/
+    background-color: saddlebrown;
+    background-image: radial-gradient(ellipse at 50% 50%, rgba(0,0,0, 0.5) 25%, rgba(0,0,0, 0.3) 75%), url("../img/IMG_0643.JPG"), url("../img/IMG_0639.JPG"); /* Vordergrund --> Hintergrund */
+    background-size: cover; /* in !einer! Dimension vollständige Abdeckung*/
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Beim HineinZoomen in Scroll-Element, wird nur der Inhalt mit Scrollbar versehen. Hintergrund fixert */
+    /* Alternativ zu background-attachment; <- weglassen und dafür min-height: 100%; statt nur height: 100%; Hintergrund scrollt mit.*/
+    
+    /* auch über background:-Befehlt und dann nacheinander die Eigenschaften */
+    
+    font-family: 'Dosis', sans-serif;
+}
+
+.header{
+    text-align: center;
+}
+
+.logo{
+    max-width: 160px;
+    /* filter: invert(); Farben werden invertiert*/
+    /* svg-Datei kann bearbeitet werden: Farben dort ändern*/
+    margin-top: 50px;
+    margin-bottom: 35px;
+    
+    animation-name: flyingowl, sittingowl;
+    animation-duration: 1s, 3s;
+    animation-delay: 0s, 1s;
+    animation-timing-function: ease-out, cubic-bezier(.32,.03,.71,.99);
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: backwards, none;
+}
+.logo:hover{
+    transition: transform 0.2s, opacity 0.2s;
+    transform: rotate(10deg);
+    opacity: 0.5;
+}
+
+.main{
+    color: white;
+    text-align: center;
+}
+.main--heading{
+    text-shadow: 0px 0px 10px orange;
+    
+    margin-bottom: 5px;
+    transition: background-color 1s;
+}
+
+.main--heading:hover{
+    background-color: saddlebrown;
+}
+
+.button{
+    margin-top: 10px;
+    font-weight: bold!important;    /* Erhöhung des Wichtigkeitslevels über die normale CSS-Regel */
+    color: white;
+    text-decoration: none;
+    background-color: rgb(155, 131, 116);
+    padding: 10px 20px 10px 20px;
+    display: inline-block; /* Textfluss kann verschoben werden. Ermöglicht auch das Setzen einer margin, Breit oder Höhe. Nur inline: padding überdeckt anderen Text*/
+    border-radius: 1000px; /* Browser kann es nicht darstellen -> Ecken werden komplett abgerundet */
+    
+    /* transition: all 0.5s; /* alle hover-Effekte sollen animiert werden. Mit Dauer in Sekunden */
+    /* transition: background-color 5s, color 0.5s; /* unterschiedliche Animationsdauer für Elemente */
+    /* transition: all 2s ease-in-out 0.2s; /* timing-function: Zeitverlauf mit Delay, alternativ: linear, ease-in, cubic-bezier() <- Website */
+    /* transition: all 2s cubic-bezier(0,1.66,1,-0.03); */
+}
+
+/* background-image kann nicht animiert werden. Aber die background size */
+
+.button:hover{
+    /* background-color: rgb(105, 81, 66);
+    color: orange;
+    transition: all 0s; /* Sofortiges Überschreiben beim Drüberfahren. Aber nicht beim Wegfahren mit der Maus */
+    
+    background-image: radial-gradient(circle at 50% 50%, rgb(135, 111, 96) 1%, rgb(105, 81, 66) 1%);
+    background-size: 20000% 20000%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    
+    transition: background-size linear 0.25s;
+}
+.button:hover:active{
+    /* background-color: green; */
+    transition-duration: 0s;
+    background-size: 100% 100%;
+}
+
+
+#test-para{
+    /* font-size in px können nicht durch Browser-Einstellung der Standardschriftart geändert werden */
+    /* font-size: 1.5em;   /* Angabe in em, relative Größe zum parent-Element. Vererbung aber in pixeln */
+    font-size: 1.5rem;   /* relative Größe zum root-Element(hier html). Vererbung aber in pixeln. Vermeidet Skalierungsketten, da Bezug immer gleich */
+    
+    text-shadow: 0px 0px 10px black;
+    
+    width: 200px;
+    margin: auto; /* paragraph auf Bildschirm zentrieren/center*/
+}
+#test-para:hover{
+    
+    /*animation:    my1animation 10s linear 1s both 3,
+                    my2animation 5s ease-in 1s both 3; /* Reihenfolge bis auf duration/delay egal. Alternativ auch wie ff: */
+    
+    animation-name: my1animation, my2animation;
+    animation-duration: 2s, 1s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: 1, 2; /* auch infinite möglich */
+    animation-delay: 0.5s;
+    animation-fill-mode: both; /* noch vor dem Laden wird die Color auf den 0%-Wert der Animation gesetzt. Danach auf 100%-Wert */
+}
+
+#euleSpan{
+    font-size: 1.2em;
+    text-shadow: 0px 0px 10px red;
+    transform: rotate(-10deg);
+    display: inline-block; /* inline, inline-block oder block möglich */
+    margin: 0px -5px 0px -5px;
+}
+
+@keyframes my1animation {
+    0%, 100% {
+        color: white;
+    }
+    25% {
+        color: red;
+    }
+    50% {
+        color: greenyellow;
+    }
+    75% {
+        color: blue;
+    }
+}
+/* Transform hat den Vorteil, dass folgende Elemente nicht verschoben werden; schnell */
+@keyframes my2animation{
+    0% {
+        transform: translate(0px, 0px); /* Angabe, damit sich Browser auf Verschiebung vorbereiten kann */
+    }
+    50% {
+        transform: translate(50px, 40px) scale(2); /* Verschiebung auf Grafikkarten-Ebene */
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+@keyframes flyingowl{
+    0% {
+        transform: translate(-60vw, 0px) rotate(-64deg);   /* Einheiten: vw -> viewpoint-width, vh -> viewpoint-height; viewpoint: Browserfenster */
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+@keyframes sittingowl{
+    0%, 100% {
+        transform: translate(0px, 0px) rotate(0deg);   /* Einheiten: vw -> view-width, vh -> view-height; view: Browserfenster */
+    }
+    50% {
+        transform: translate(0px, 5px) rotate(2deg);
+    }
+}
